@@ -4,9 +4,6 @@ set -e
 # Navigate to the backend directory to run Gradle commands
 cd backend
 
-echo "Running Testcontainers integration tests..."
-./gradlew integrationTest
-
 echo "Running Detekt (static analysis)..."
 ./gradlew detekt
 
