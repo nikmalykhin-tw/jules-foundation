@@ -1,10 +1,10 @@
-[[allowlist]]
+[allowlist]
 paths = [
   "^\\.venv/",
   "^ci/.gitleaks.toml$"
 ]
 
-[[allowlist]]
+[[allowlist.files]]
 description = "Allow AGENTS.md documentation line"
 path = "AGENTS.md"
 
