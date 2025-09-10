@@ -1,5 +1,7 @@
 [allowlist]
-# Add allowed patterns here
+paths = [
+  "^\\.venv/"
+]
 
 [[rules]]
 id = "generic-secret"
