@@ -87,3 +87,22 @@ Test code is as important as production code and must be kept equally clean. Fol
   * **T**imely: Be written just before the production code.  
 * **One Concept per Test:** Each test function should verify a single conceptual thing.  
 * **Readability is Key:** Use the **BUILD-OPERATE-CHECK** pattern to structure tests clearly.
+
+## 9. Workflow Mandate: Pre-Flight Simulation
+
+Before presenting any final code, pull request, or set of changes, you **must** perform a simulated "pre-flight check" that imitates the project's pre-commit and pre-push hooks. This is a non-negotiable quality gate.
+
+Your process for this simulation will be:
+
+1.  **Analyze the Hooks:** Locate and thoroughly analyze the `.pre-commit-config.yaml` file and any pre-push scripts (e.g., `ci/pre-push.sh`). These files are your source of truth for the required quality checks.
+
+2.  **Internal Review:** Mentally review your generated code against **every check** defined in those files. This includes, but is not limited to:
+    * Code formatting and style.
+    * Static analysis and linting.
+    * Secret scanning (`gitleaks`).
+    * Running unit and integration tests.
+
+3.  **Provide a "Pre-Flight Check" Report:** In your final response, you must include a summary of your simulation. This report must confirm:
+    * That you have performed the simulation.
+    * The specific checks you considered (e.g., `ktlint`, `detekt`, `gradle test`).
+    * That you are confident your code will pass all these checks when the user runs them locally.
