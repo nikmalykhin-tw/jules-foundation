@@ -99,7 +99,7 @@ Your process for this simulation will be:
 2.  **Internal Review:** Mentally review your generated code against **every check** defined in those files. This includes, but is not limited to:
     * Code formatting and style.
     * Static analysis and linting.
-    * Secret scanning (`gitleaks`).
+    * Credential and token scanning (using `gitleaks`).
     * Running unit and integration tests.
 
 3.  **Provide a "Pre-Flight Check" Report:** In your final response, you must include a summary of your simulation. This report must confirm:
