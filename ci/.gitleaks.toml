@@ -1,12 +1,9 @@
 [allowlist]
 paths = [
   "^\\.venv/",
-  "^ci/.gitleaks.toml$"
+  "^ci/.gitleaks.toml$",
+  "^AGENTS.md$"
 ]
-
-[[allowlist.files]]
-description = "Allow AGENTS.md documentation line"
-path = "AGENTS.md"
 
 [[rules]]
 id = "generic-secret"
