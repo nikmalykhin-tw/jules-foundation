@@ -1,40 +1,77 @@
-## Micronaut 4.9.3 Documentation
+# Jules Foundation – Backend
 
-- [User Guide](https://docs.micronaut.io/4.9.3/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.9.3/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.9.3/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
+This is the backend service for the Jules Foundation project.
+
 ---
 
-- [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
-- [GraalVM Gradle Plugin documentation](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
-- [Shadow Gradle Plugin](https://gradleup.com/shadow/)
-## Feature kotest documentation
+## Overview
 
-- [Micronaut Test Kotest5 documentation](https://micronaut-projects.github.io/micronaut-test/latest/guide/#kotest5)
+- **Stack:** Kotlin (Micronaut), Micronaut Data JDBC, JWT-based stateless auth, Flyway migrations.
+- **Entry point:** `backend/src/main/kotlin/jules/foundation/Application.kt`
+- **Controllers:** `backend/src/main/kotlin/jules/foundation/controller/`
+- **Tests:** `backend/src/test/kotlin/jules/foundation/`
 
-- [https://kotest.io/](https://kotest.io/)
+---
 
+## Prerequisites
 
-## Feature serialization-jackson documentation
+- Java 17+ (`brew install openjdk@17`)
+- `pre-commit` for hooks (`brew install pre-commit`)
+- No need to install Gradle (use `./gradlew`)
 
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
+---
 
+## Running the App (Mac OS Terminal)
 
-## Feature ksp documentation
+Start the backend:
 
-- [Micronaut Kotlin Symbol Processing (KSP) documentation](https://docs.micronaut.io/latest/guide/#kotlin)
+```sh
+./gradlew run
+```
 
-- [https://kotlinlang.org/docs/ksp-overview.html](https://kotlinlang.org/docs/ksp-overview.html)
+The app will start at [http://localhost:8080](http://localhost:8080).
 
+---
 
-## Feature micronaut-aot documentation
+## Pre-commit & Pre-push Hooks
 
-- [Micronaut AOT documentation](https://micronaut-projects.github.io/micronaut-aot/latest/guide/)
+This repository uses [pre-commit](https://pre-commit.com/) to enforce code quality and run tests before commits and pushes.
 
+### Setup
 
-## Feature openapi documentation
+```sh
+brew install pre-commit
+pre-commit install
+pre-commit install --hook-type pre-push
+```
 
-- [Micronaut OpenAPI Support documentation](https://micronaut-projects.github.io/micronaut-openapi/latest/guide/index.html)
+### What the Hooks Do
 
-- [https://www.openapis.org](https://www.openapis.org)
+- **Pre-commit:** Runs Kotest, Prettier, Ktlint.
+- **Pre-push:** Runs Testcontainers, Playwright, ESLint, Detekt, Gitleaks, and Gradle dependency checks.
+
+### Run Hooks Manually
+
+```sh
+pre-commit run --all-files
+ci/pre-push.sh
+```
+
+> **Note:**  
+> Pre-commit hooks are enforced only if installed locally. If you skip installation, you can commit without running checks.  
+> All checks are also enforced in CI/CD (see [`docs/local-ci-cd-flow.md`](../docs/local-ci-cd-flow.md)).
+
+---
+
+## Testing
+
+- Run all backend tests:
+  ```sh
+  ./gradlew test
+  ```
+
+---
+
+## References
+
+- [docs/tech-stack.md](../docs/tech-stack.md)
