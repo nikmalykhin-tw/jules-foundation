@@ -5,7 +5,7 @@ set -e
 cd backend
 
 echo "Running Detekt (static analysis)..."
-./gradlew detekt
+gitleaks detect --source . --no-git --redact --config-path CI/.gitleaks.toml
 
 # Navigate back to the root for Gitleaks
 cd ..
