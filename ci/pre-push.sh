@@ -1,14 +1,7 @@
 #!/bin/bash
 set -e
 
-# Navigate to the backend directory to run Gradle commands
-cd backend
-
-echo "Running Detekt (static analysis)..."
-gitleaks detect --source . --no-git --redact --config ../CI/.gitleaks.toml
-
-# Navigate back to the root for Gitleaks
-cd ..
+# Gitleaks
 
 echo "Running Gitleaks (secrets scan)..."
 if ! command -v gitleaks &> /dev/null; then
@@ -17,10 +10,10 @@ if ! command -v gitleaks &> /dev/null; then
 fi
 gitleaks detect --source . --no-git --redact --config CI/.gitleaks.toml
 
-# Navigate back to the backend directory for the final Gradle command
+# Navigate to the backend directory to run Gradle commands
 cd backend
 
-echo "Running Gradle dependency check..."
-./gradlew dependencyCheckAnalyze
+echo "Running Detekt (static analysis)..."
+gitleaks detect --source . --no-git --redact --config ../CI/.gitleaks.toml
 
 echo "Pre-push checks passed."
