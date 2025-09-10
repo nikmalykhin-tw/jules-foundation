@@ -9,3 +9,7 @@ id = "generic-secret"
 description = "Generic Secret"
 regex = '''(?i)(secret|password|api[_-]?key|token)["'\s:=]+[0-9a-zA-Z\-\._]{8,}'''
 
+[[allowlist]]
+description = "Allow AGENTS.md documentation line"
+path = "AGENTS.md"
+
