@@ -12,15 +12,6 @@ processors:
 console-reports:
   active: true
 
-output-reports:
-  active: true
-  xml:
-    active: true
-  html:
-    active: true
-  txt:
-    active: false
-
 style:
   MagicNumber:
     active: false
@@ -28,4 +19,4 @@ style:
     active: false
   MaxLineLength:
     active: true
-    value: 120
+    maxLineLength: 120

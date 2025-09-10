@@ -5,6 +5,7 @@ plugins {
     id("io.micronaut.application") version "4.5.4"
     id("com.gradleup.shadow") version "8.3.7"
     id("io.micronaut.aot") version "4.5.4"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
 }
 
 version = "0.1"
@@ -63,6 +64,12 @@ micronaut {
         optimizeNetty = true
         replaceLogbackXml = true
     }
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    allRules = false
+    config = files("$rootDir/detekt-config.yml") // Optional: add your config here
 }
 
 

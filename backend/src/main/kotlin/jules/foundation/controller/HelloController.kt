@@ -8,9 +8,9 @@ import io.micronaut.http.annotation.Produces
 @Controller("/")
 class HelloController {
 
-    @Get
-    @Produces(MediaType.TEXT_PLAIN)
-    fun index(): String {
-        return "Hello, World!"
+    companion object {
+        private const val HELLO_WORLD = "Hello, World!"
     }
+
+    @Get @Produces(MediaType.TEXT_PLAIN) fun index(): String = HELLO_WORLD
 }
