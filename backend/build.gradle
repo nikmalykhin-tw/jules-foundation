@@ -14,6 +14,11 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    integrationTestImplementation.extendsFrom testImplementation
+    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
 dependencies {
     ksp("io.micronaut:micronaut-http-validation")
     ksp("io.micronaut.openapi:micronaut-openapi")
@@ -31,11 +36,6 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers:1.19.3")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:5.8.0")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.8.0")
-    
-    integrationTestImplementation("io.kotest:kotest-runner-junit5-jvm:5.8.0")
-    integrationTestImplementation("io.kotest:kotest-assertions-core-jvm:5.8.0")
-    integrationTestImplementation("org.testcontainers:testcontainers:1.19.3")
-    integrationTestImplementation("io.micronaut:micronaut-http-client")
 }
 
 
