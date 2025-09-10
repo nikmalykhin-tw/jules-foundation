@@ -27,6 +27,9 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     testImplementation("io.micronaut:micronaut-http-client")
+    testImplementation("org.testcontainers:testcontainers:1.19.3")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:5.8.0")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.8.0")
 }
 
 
@@ -64,4 +67,28 @@ micronaut {
 
 tasks.named("dockerfileNative") {
     jdkVersion = "21"
+}
+
+sourceSets {
+    create("integrationTest") {
+        kotlin {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir("src/integrationTest/kotlin")
+        }
+        resources.srcDir("src/integrationTest/resources")
+    }
+}
+
+tasks.register("integrationTest", Test) {
+    description = "Runs integration tests."
+    group = "verification"
+    testClassesDirs = sourceSets["integrationTest"].output.classesDirs
+    classpath = sourceSets["integrationTest"].runtimeClasspath
+    useJUnitPlatform()
+    mustRunAfter(tasks["test"])
+}
+
+tasks.named("check") {
+    dependsOn("integrationTest")
 }

@@ -4,13 +4,13 @@ repos:
     hooks:
       - id: kotest
         name: Kotest (Kotlin tests)
-        entry: ./gradlew ktlintCheck test
+        entry: cd backend && ./gradlew ktlintCheck test
         language: system
         types: [kotlin]
         pass_filenames: false
       - id: ktlint
         name: Ktlint (Kotlin linter)
-        entry: ./gradlew ktlintFormat
+        entry: cd backend && ./gradlew ktlintFormat
         language: system
         types: [kotlin]
         pass_filenames: false
@@ -18,5 +18,5 @@ repos:
         name: Pre-push (Testcontainers, Detekt, Gitleaks, Dependency Check)
         entry: ci/pre-push.sh
         language: script
-        stages: [push]
+        stages: [pre-push]
         pass_filenames: false
