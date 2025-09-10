@@ -5,7 +5,7 @@ set -e
 cd backend
 
 echo "Running Detekt (static analysis)..."
-gitleaks detect --source . --no-git --redact --config CI/.gitleaks.toml
+gitleaks detect --source . --no-git --redact --config ../CI/.gitleaks.toml
 
 # Navigate back to the root for Gitleaks
 cd ..
