@@ -1,0 +1,16 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: local
+    hooks:
+      - id: kotest
+        name: Kotest (Kotlin tests)
+        entry: ./gradlew ktlintCheck test
+        language: system
+        types: [kotlin]
+        pass_filenames: false
+      - id: ktlint
+        name: Ktlint (Kotlin linter)
+        entry: ./gradlew ktlintFormat
+        language: system
+        types: [kotlin]
+        pass_filenames: false
