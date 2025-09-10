@@ -1,6 +1,7 @@
 [allowlist]
 paths = [
-  "^\\.venv/"
+  "^\\.venv/",
+  "^ci/.gitleaks.toml$"
 ]
 
 [[rules]]
