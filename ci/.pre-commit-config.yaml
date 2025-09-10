@@ -16,7 +16,7 @@ repos:
         pass_filenames: false
       - id: pre-push
         name: Pre-push (Testcontainers, Detekt, Gitleaks, Dependency Check)
-        entry: .github/hooks/pre-push.sh
+        entry: ci/pre-push.sh
         language: script
         stages: [push]
         pass_filenames: false

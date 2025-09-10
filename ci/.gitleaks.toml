@@ -1,0 +1,7 @@
+[allowlist]
+# Add allowed patterns here
+
+[[rules]]
+description = "Generic Secret"
+regex = '''(?i)(secret|password|api[_-]?key|token)["'\s:=]+[0-9a-zA-Z\-\._]{8,}'''
+
