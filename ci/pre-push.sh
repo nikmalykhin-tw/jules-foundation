@@ -5,7 +5,7 @@ set -e
 cd backend
 
 echo "Running Detekt (static analysis)..."
-gitleaks detect --source . --no-git --redact --config-path CI/.gitleaks.toml
+gitleaks detect --source . --no-git --redact --config CI/.gitleaks.toml
 
 # Navigate back to the root for Gitleaks
 cd ..
@@ -15,7 +15,7 @@ if ! command -v gitleaks &> /dev/null; then
   echo "Gitleaks not found. Please install it: https://github.com/gitleaks/gitleaks"
   exit 1
 fi
-gitleaks detect --source . --no-git --redact
+gitleaks detect --source . --no-git --redact --config CI/.gitleaks.toml
 
 # Navigate back to the backend directory for the final Gradle command
 cd backend
