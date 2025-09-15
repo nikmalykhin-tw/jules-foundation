@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jules Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body
+    class="bg-gray-100 flex items-center justify-center h-screen"
+    x-data="{ message: 'Click the button to fetch the message.' }"
+>
+    <div
+        class="text-center"
+        x-data="{
+            getMessage() {
+                fetch('/api')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(text => {
+                        this.message = text;
+                    })
+                    .catch(error => {
+                        this.message = 'Error: Could not fetch message.';
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+            }
+        }"
+    >
+        <div
+            id="message-container"
+            class="mb-4 p-4 bg-white rounded shadow-md min-h-[50px]"
+            x-text="message"
+        ></div>
+        <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            @click="getMessage()"
+        >
+            Get Message
+        </button>
+    </div>
+</body>
+</html>

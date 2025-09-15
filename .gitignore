@@ -25,3 +25,6 @@ replay_pid*
 .vscode/settings.json
 .github/copilot-instructions.md
 .github/git-conventional-commit-messages.md
+
+# Node
+frontend/node_modules/
